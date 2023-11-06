@@ -1,19 +1,19 @@
-import comparingExpressionAnswer from "../index.js";
+import comparingExpressionAnswer from '../index.js';
 
 const calculationByOperator = (a, b, operator) => {
   switch (operator) {
-    case "+":
+    case '+':
       return a + b;
-    case "-":
+    case '-':
       return a - b;
-    case "*":
+    case '*':
       return a * b;
     default:
       return null;
   }
 };
 const brainCalcGame = () => {
-  const operators = ["+", "-", "*"];
+  const operators = ['+', '-', '*'];
   const expressions = [];
   const correctAnswers = [];
   for (let i = 1; i <= 3; i += 1) {
@@ -23,16 +23,16 @@ const brainCalcGame = () => {
       Math.floor(Math.random() * 3),
     ];
     expressions.push(
-      `${firstNumber} ${operators[indexOperators]} ${secondNumber}`
+      `${firstNumber} ${operators[indexOperators]} ${secondNumber}`,
     );
     const correctAnswer = calculationByOperator(
       firstNumber,
       secondNumber,
-      operators[indexOperators]
+      operators[indexOperators],
     );
     correctAnswers.push(correctAnswer.toString());
   }
-  const mainQuestionOfGame = "What is the result of the expression?";
+  const mainQuestionOfGame = 'What is the result of the expression?';
   comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
 };
 
