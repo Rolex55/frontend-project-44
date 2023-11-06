@@ -1,4 +1,4 @@
-import comparingExpressionAnswer from "../index.js";
+import comparingExpressionAnswer from '../index.js';
 
 const gettingProgressionWithHiddenNumber = () => {
   const startNumber = Math.floor(Math.random() * 20);
@@ -10,8 +10,8 @@ const gettingProgressionWithHiddenNumber = () => {
     progression.push(number);
   }
   const hiddenIndex = Math.floor(Math.random() * 10);
-  const hiddenNumber = progression.splice(hiddenIndex, 1, "..");
-  progression = progression.join(" ");
+  const hiddenNumber = progression.splice(hiddenIndex, 1, '..');
+  progression = progression.join(' ');
   return [progression, hiddenNumber];
 };
 
@@ -25,7 +25,7 @@ const brainProgressionGame = () => {
     expressions.push(progression);
     correctAnswers.push(hiddenNumber.toString());
   }
-  const mainQuestionOfGame = "What number is missing in the progression?";
+  const mainQuestionOfGame = 'What number is missing in the progression?';
   comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
 };
 

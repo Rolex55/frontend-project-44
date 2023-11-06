@@ -25,12 +25,12 @@ const brainCalcGame = () => {
     expressions.push(
       `${firstNumber} ${operators[indexOperators]} ${secondNumber}`,
     );
-    const correctAnswer = calculationByOperator(
+    const rightAnswer = calculationByOperator(
       firstNumber,
       secondNumber,
       operators[indexOperators],
     );
-    correctAnswers.push(correctAnswer.toString());
+    correctAnswers.push(rightAnswer.toString());
   }
   const mainQuestionOfGame = 'What is the result of the expression?';
   comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
