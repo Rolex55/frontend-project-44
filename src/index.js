@@ -9,7 +9,7 @@ const comparingExpressionAnswer = (
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log(`${mainQuestionOfGame}`);
-  let winFlag = true;
+  let Flag = true;
   for (let i = 0; i < expressions.length; i += 1) {
     console.log(`Question: ${expressions[i]}`);
     const userAnswer = readlineSync.question('Your answer: ');
@@ -17,12 +17,12 @@ const comparingExpressionAnswer = (
       console.log(
         `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswers[i]}'.\nLet's try again, ${name}!`,
       );
-      winFlag = false;
+      Flag = false;
       break;
     }
     console.log('Correct!');
   }
-  if (winFlag === true) {
+  if (Flag === true) {
     console.log(`Congratulations, ${name}!`);
   }
 };
