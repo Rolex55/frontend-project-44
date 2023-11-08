@@ -7,7 +7,7 @@ const brainEvenGame = () => {
   for (let i = 1; i <= 3; i += 1) {
     const number = Math.floor(Math.random() * 100);
     expressions.push(number);
-    number % 2 === 0 ? correctAnswers.push('yes') : correctAnswers.push('no');
+    correctAnswers.push(number % 2 === 0 ? 'yes' : 'no');
   }
   comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
 };
