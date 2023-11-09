@@ -1,14 +1,20 @@
-import comparingExpressionAnswer from '../index.js';
+import { comparingExpressionAnswer, getRandomNumbers } from '../index.js';
 
-const generatingRandomNumber = () => {
-  const number = Math.floor(Math.random() * 100);
-  const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
+const isEvenNumber = (number) => number % 2 === 0;
+
+const returnRandomNumberAndCorrectAnswer = () => {
+  const maxNumber = 100;
+  const number = getRandomNumbers(maxNumber);
+  const correctAnswer = isEvenNumber(number) ? 'yes' : 'no';
   return [number, correctAnswer];
 };
 
-const isEvenGame = () => {
+const launchIsEvenNumberGame = () => {
   const mainQuestionOfGame = 'Answer "yes" if the number is even, otherwise answer "no".';
-  comparingExpressionAnswer(generatingRandomNumber, mainQuestionOfGame);
+  comparingExpressionAnswer(
+    returnRandomNumberAndCorrectAnswer,
+    mainQuestionOfGame,
+  );
 };
 
-export default isEvenGame;
+export default launchIsEvenNumberGame;

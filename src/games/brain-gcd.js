@@ -1,6 +1,6 @@
-import comparingExpressionAnswer from '../index.js';
+import { comparingExpressionAnswer, getRandomNumbers } from '../index.js';
 
-const calculationNod = (a, b) => {
+const calculateMaxGcd = (a, b) => {
   let maxNod;
   for (let i = 0; i <= Math.min(a, b); i += 1) {
     if (a % i === 0 && b % i === 0) {
@@ -10,19 +10,20 @@ const calculationNod = (a, b) => {
   return maxNod;
 };
 
-const generatingRandomNumbersAndGcd = () => {
+const returnRandomNumbersAndGcd = () => {
+  const maxNumber = 100;
   const [firstNumber, secondNumber] = [
-    Math.floor(Math.random() * 100),
-    Math.floor(Math.random() * 100),
+    getRandomNumbers(maxNumber),
+    getRandomNumbers(maxNumber),
   ];
   const expression = `${firstNumber} ${secondNumber}`;
-  const correctAnswer = calculationNod(firstNumber, secondNumber).toString();
+  const correctAnswer = calculateMaxGcd(firstNumber, secondNumber).toString();
   return [expression, correctAnswer];
 };
 
 const calculatingGcdGame = () => {
   const mainQuestionOfGame = 'Find the greatest common divisor of given numbers.';
-  comparingExpressionAnswer(generatingRandomNumbersAndGcd, mainQuestionOfGame);
+  comparingExpressionAnswer(returnRandomNumbersAndGcd, mainQuestionOfGame);
 };
 
 export default calculatingGcdGame;

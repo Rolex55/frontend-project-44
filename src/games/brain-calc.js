@@ -1,6 +1,6 @@
-import comparingExpressionAnswer from '../index.js';
+import { comparingExpressionAnswer, getRandomNumbers } from '../index.js';
 
-const calculationByOperator = (a, b, operator) => {
+const calculateExpressionDependsOnOperator = (a, b, operator) => {
   switch (operator) {
     case '+':
       return a + b;
@@ -9,19 +9,20 @@ const calculationByOperator = (a, b, operator) => {
     case '*':
       return a * b;
     default:
-      return null;
+      throw new Error(`Unknown operator: '${operator}'!`);
   }
 };
 
 const generatingRandomExpression = () => {
   const operators = ['+', '-', '*'];
+  const maxNumber = 50;
   const [firstNumber, secondNumber, indexOperators] = [
-    Math.floor(Math.random() * 50),
-    Math.floor(Math.random() * 50),
-    Math.floor(Math.random() * 3),
+    getRandomNumbers(maxNumber),
+    getRandomNumbers(maxNumber),
+    getRandomNumbers(operators.length),
   ];
   const expression = `${firstNumber} ${operators[indexOperators]} ${secondNumber}`;
-  const resultOfExpression = calculationByOperator(
+  const resultOfExpression = calculateExpressionDependsOnOperator(
     firstNumber,
     secondNumber,
     operators[indexOperators],

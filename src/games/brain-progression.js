@@ -1,15 +1,20 @@
-import comparingExpressionAnswer from '../index.js';
+import { comparingExpressionAnswer, getRandomNumbers } from '../index.js';
 
-const gettingProgressionWithHiddenNumber = () => {
-  const startNumber = Math.floor(Math.random() * 20);
-  const step = Math.floor(Math.random() * 10 + 1);
-  let progression = [];
+const getProgression = (startNumber, step) => {
+  const progression = [];
   let number;
   for (let i = 0; i < 10; i += 1) {
     number = startNumber + step * i;
     progression.push(number);
   }
-  const hiddenIndex = Math.floor(Math.random() * 10);
+  return progression;
+};
+const getProgressionWithHiddenNumber = () => {
+  const [maxStartNumber, maxStep, minStep, maxHiddenIndex] = [20, 10, 1, 10];
+  const startNumber = getRandomNumbers(maxStartNumber);
+  const step = getRandomNumbers(maxStep, minStep);
+  let progression = getProgression(startNumber, step);
+  const hiddenIndex = getRandomNumbers(maxHiddenIndex);
   const hiddenNumber = progression.splice(hiddenIndex, 1, '..').toString();
   progression = progression.join(' ');
   return [progression, hiddenNumber];
@@ -17,10 +22,7 @@ const gettingProgressionWithHiddenNumber = () => {
 
 const guessMissingNumberinProgressionGame = () => {
   const mainQuestionOfGame = 'What number is missing in the progression?';
-  comparingExpressionAnswer(
-    gettingProgressionWithHiddenNumber,
-    mainQuestionOfGame,
-  );
+  comparingExpressionAnswer(getProgressionWithHiddenNumber, mainQuestionOfGame);
 };
 
 export default guessMissingNumberinProgressionGame;

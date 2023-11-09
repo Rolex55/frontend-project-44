@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import isPrimeNumberGame from '../src/games/brain-prime.js';
+import launchIsPrimeNumberGame from '../src/games/brain-prime.js';
 
-isPrimeNumberGame();
+launchIsPrimeNumberGame();

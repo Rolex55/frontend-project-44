@@ -1,27 +1,28 @@
-import comparingExpressionAnswer from '../index.js';
+import { comparingExpressionAnswer, getRandomNumbers } from '../index.js';
 
-const determinePrimeNumbers = (number) => {
+const isPrimeNumber = (number) => {
   let counterDivisors = 0;
   for (let i = 1; i <= number; i += 1) {
     if (number % i === 0) {
       counterDivisors += 1;
     }
   }
-  if (counterDivisors === 2) {
-    return 'yes';
-  }
-  return 'no';
+  return counterDivisors === 2;
 };
 
-const generatingRandomNumber = () => {
-  const number = Math.floor(Math.random() * 100 + 2);
-  const correctAnswer = determinePrimeNumbers(number);
+const returnRandomNumberAndCorrectAnswer = () => {
+  const [maxNumber, minNumber] = [100, 2];
+  const number = getRandomNumbers(maxNumber, minNumber);
+  const correctAnswer = isPrimeNumber(number) ? 'yes' : 'no';
   return [number, correctAnswer];
 };
 
-const isPrimeNumberGame = () => {
+const launchIsPrimeNumberGame = () => {
   const mainQuestionOfGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  comparingExpressionAnswer(generatingRandomNumber, mainQuestionOfGame);
+  comparingExpressionAnswer(
+    returnRandomNumberAndCorrectAnswer,
+    mainQuestionOfGame,
+  );
 };
 
-export default isPrimeNumberGame;
+export default launchIsPrimeNumberGame;
