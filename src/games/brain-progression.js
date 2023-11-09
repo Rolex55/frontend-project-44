@@ -10,23 +10,17 @@ const gettingProgressionWithHiddenNumber = () => {
     progression.push(number);
   }
   const hiddenIndex = Math.floor(Math.random() * 10);
-  const hiddenNumber = progression.splice(hiddenIndex, 1, '..');
+  const hiddenNumber = progression.splice(hiddenIndex, 1, '..').toString();
   progression = progression.join(' ');
   return [progression, hiddenNumber];
 };
 
-const brainProgressionGame = () => {
-  const expressions = [];
-  const correctAnswers = [];
-  let progression;
-  let hiddenNumber;
-  for (let j = 1; j <= 3; j += 1) {
-    [progression, hiddenNumber] = gettingProgressionWithHiddenNumber();
-    expressions.push(progression);
-    correctAnswers.push(hiddenNumber.toString());
-  }
+const guessMissingNumberinProgressionGame = () => {
   const mainQuestionOfGame = 'What number is missing in the progression?';
-  comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
+  comparingExpressionAnswer(
+    gettingProgressionWithHiddenNumber,
+    mainQuestionOfGame,
+  );
 };
 
-export default brainProgressionGame;
+export default guessMissingNumberinProgressionGame;

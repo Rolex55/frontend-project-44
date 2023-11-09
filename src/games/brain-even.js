@@ -1,19 +1,14 @@
 import comparingExpressionAnswer from '../index.js';
 
-const brainEvenGame = () => {
-  const mainQuestionOfGame = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const expressions = [];
-  const correctAnswers = [];
-  for (let i = 1; i <= 3; i += 1) {
-    const number = Math.floor(Math.random() * 100);
-    expressions.push(number);
-    if (number % 2 === 0) {
-      correctAnswers.push('yes');
-    } else {
-      correctAnswers.push('no');
-    }
-  }
-  comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
+const generatingRandomNumber = () => {
+  const number = Math.floor(Math.random() * 100);
+  const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
+  return [number, correctAnswer];
 };
 
-export default brainEvenGame;
+const isEvenGame = () => {
+  const mainQuestionOfGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+  comparingExpressionAnswer(generatingRandomNumber, mainQuestionOfGame);
+};
+
+export default isEvenGame;

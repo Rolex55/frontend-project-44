@@ -1,28 +1,25 @@
 import readlineSync from 'readline-sync';
 
-const comparingExpressionAnswer = (
-  expressions,
-  correctAnswers,
-  mainQuestionOfGame,
-) => {
+const comparingExpressionAnswer = (generatingFunction, mainQuestionOfGame) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log(`${mainQuestionOfGame}`);
-  let Flag = true;
-  for (let i = 0; i < expressions.length; i += 1) {
-    console.log(`Question: ${expressions[i]}`);
+  let counter = 0;
+  while (counter < 3) {
+    const [expression, correctAnswer] = generatingFunction();
+    console.log(`Question: ${expression}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer !== correctAnswers[i]) {
+    if (userAnswer !== correctAnswer) {
       console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswers[i]}'.\nLet's try again, ${name}!`,
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${name}!`,
       );
-      Flag = false;
       break;
     }
     console.log('Correct!');
+    counter += 1;
   }
-  if (Flag === true) {
+  if (counter === 3) {
     console.log(`Congratulations, ${name}!`);
   }
 };

@@ -13,19 +13,15 @@ const determinePrimeNumbers = (number) => {
   return 'no';
 };
 
-const brainPrimeGame = () => {
-  const expressions = [];
-  const correctAnswers = [];
-  let number;
-  let rightAnswer;
-  for (let j = 1; j <= 3; j += 1) {
-    number = Math.floor(Math.random() * 100 + 2);
-    rightAnswer = determinePrimeNumbers(number);
-    expressions.push(number);
-    correctAnswers.push(rightAnswer);
-  }
-  const mainQuestionOfGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
+const generatingRandomNumber = () => {
+  const number = Math.floor(Math.random() * 100 + 2);
+  const correctAnswer = determinePrimeNumbers(number);
+  return [number, correctAnswer];
 };
 
-export default brainPrimeGame;
+const isPrimeNumberGame = () => {
+  const mainQuestionOfGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  comparingExpressionAnswer(generatingRandomNumber, mainQuestionOfGame);
+};
+
+export default isPrimeNumberGame;

@@ -10,20 +10,19 @@ const calculationNod = (a, b) => {
   return maxNod;
 };
 
-const brainGcdGame = () => {
-  const expressions = [];
-  const correctAnswers = [];
-  for (let j = 1; j <= 3; j += 1) {
-    const [firstNumber, secondNumber] = [
-      Math.floor(Math.random() * 100),
-      Math.floor(Math.random() * 100),
-    ];
-    expressions.push(`${firstNumber} ${secondNumber}`);
-    const correctAnswer = calculationNod(firstNumber, secondNumber);
-    correctAnswers.push(correctAnswer.toString());
-  }
-  const mainQuestionOfGame = 'Find the greatest common divisor of given numbers.';
-  comparingExpressionAnswer(expressions, correctAnswers, mainQuestionOfGame);
+const generatingRandomNumbersAndGcd = () => {
+  const [firstNumber, secondNumber] = [
+    Math.floor(Math.random() * 100),
+    Math.floor(Math.random() * 100),
+  ];
+  const expression = `${firstNumber} ${secondNumber}`;
+  const correctAnswer = calculationNod(firstNumber, secondNumber).toString();
+  return [expression, correctAnswer];
 };
 
-export default brainGcdGame;
+const calculatingGcdGame = () => {
+  const mainQuestionOfGame = 'Find the greatest common divisor of given numbers.';
+  comparingExpressionAnswer(generatingRandomNumbersAndGcd, mainQuestionOfGame);
+};
+
+export default calculatingGcdGame;
